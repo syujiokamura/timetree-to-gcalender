@@ -1,0 +1,12 @@
+{
+  "name": "dev-container",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "dev",
+  "workspaceFolder": "/usr/src/app",
+  "extensions": [
+    "ms-python.python",
+    "dbaeumer.vscode-eslint"
+  ]
+}

@@ -1,0 +1,29 @@
+service: timetree-to-gcalender
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: ap-northeast-1
+  environment:
+    TIMETREE_SECRETS_ID: timetree_secrets
+    GCP_CALENDER_SERVICE_ROLE_SECRETS_ID: gcp-calender-service-role-json
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "secretsmanager:GetSecretValue"
+          Resource: "arn:aws:secretsmanager:*:${aws:accountId}:secret:gcp-calender-service-role-json-*"
+        - Effect: "Allow"
+          Action:
+            - "secretsmanager:GetSecretValue"
+          Resource: "arn:aws:secretsmanager:*:${aws:accountId}:secret:timetree_secrets-*"
+functions:
+  SyncCalender:
+    handler: handler.sync_calender
+    environment:
+      CALENDER_NAME: カレンダー
+
+plugins:
+  - serverless-python-requirements

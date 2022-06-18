@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+boto3 = "*"
+
+[dev-packages]
+autopep8 = "*"
+flake8 = "*"
+isort = "*"
+mccabe = "*"
+pycodestyle = "*"
+pyflakes = "*"
+toml = "*"
+mypy = "*"
+types-requests = "*"
